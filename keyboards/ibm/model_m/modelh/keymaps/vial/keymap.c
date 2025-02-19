@@ -32,6 +32,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         unregister_code(KC_LGUI);
       }
       break;
+    case KC_SPC:
+      if (record->event.pressed && is_lgui_pressed) {
+        dprint("entering emulated Alt+GUI mode...\n");
+        register_code(KC_LALT);
+        return false;
+      }
+      break;
   }
   return true;
 }
